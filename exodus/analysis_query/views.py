@@ -12,7 +12,7 @@ from django.shortcuts import render
 
 
 def randomword(length):
-   return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(length))
 
 
 class AnalysisRequestView(FormView):
