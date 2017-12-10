@@ -141,13 +141,13 @@ def start_static_analysis(analysis):
     if g_r[0]:
         shasum = g_r[1]
         infos_group = group(get_version.s(analysis),
-                    get_handle.s(analysis),
-                    get_permissions.s(analysis),
-                    compute_and_save_class_list.s(analysis),
-                    find_and_save_app_icon.s(analysis),
-                    get_app_infos.s(analysis),
-                    get_version_code.s(analysis),
-                    )()
+                            get_handle.s(analysis),
+                            get_permissions.s(analysis),
+                            compute_and_save_class_list.s(analysis),
+                            find_and_save_app_icon.s(analysis),
+                            get_app_infos.s(analysis),
+                            get_version_code.s(analysis),
+                            )()
         infos = infos_group.get()
         version = infos[0]
         handle = infos[1]
