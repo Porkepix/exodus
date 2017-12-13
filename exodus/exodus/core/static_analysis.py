@@ -56,7 +56,7 @@ def getIcon(icon_name, handle, url=None):
             soup = BeautifulSoup(text, 'html.parser')
             i = soup.find_all('img', {'class': 'cover-image', 'alt': 'Cover art'})
             if len(i) > 0:
-                url = '%s'%i[0]['src']
+                url = i[0]['src']
                 if not url.startswith('http'):
                     url = 'https:%s' % url
             else:

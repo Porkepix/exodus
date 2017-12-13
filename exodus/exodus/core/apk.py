@@ -64,7 +64,11 @@ def download_apk(self, analysis):
     shutil.rmtree(os.path.join(str(Path.home()), '.cache/gplaycli/'), ignore_errors=True)
     while retry != 0:
         # Rotate devices
-        cmd = 'gplaycli -v -a -t -y -pd %s %s -f %s/' % (analysis.query.handle, device_code_names[retry%len(device_code_names)], analysis.tmp_dir)
+        cmd = 'gplaycli -v -a -t -y -pd {} {} -f {}/'.format(
+            analysis.query.handle,
+            device_code_names[retry % len(device_code_names)],
+            analysis.tmp_dir
+        )
         print(cmd)
         process = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.STDOUT)
         output = process.communicate()[0]
@@ -226,7 +230,7 @@ class StaticAnalysis:
         self.decoded_dir = os.path.join(self.tmp_dir, 'decoded')
         self.extracted_dir = os.path.join(self.tmp_dir, 'extracted')
         # self.apk_path = os.path.join(self.query.storage_path, '%s.apk'%self.query.handle)
-        self.apk_tmp = os.path.join(self.tmp_dir, '%s.apk'%self.query.handle)
+        self.apk_tmp = os.path.join(self.tmp_dir, '{}.apk'.format(self.query.handle))
         self.apk_name = '%s_%s.apk' % (self.bucket, self.query.handle)
         self.icon_name = '%s_%s.png' % (self.bucket, self.query.handle)
         self.class_list_file = '%s_%s.clist' % (self.bucket, self.query.handle)

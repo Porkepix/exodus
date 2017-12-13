@@ -28,14 +28,14 @@ def graph(request):
         reports = Report.objects.order_by('-creation_date')
         u_t = Tracker.objects.distinct('name')
         for t in u_t:
-            g += "t%s[group=\"tracker\", label=\"%s\"];<br>"%(t.id,t.name)
+            g += "t{}[group=\"tracker\", label=\"{}\"];<br>".format(t.id, t.name)
         u_a = Application.objects.distinct('handle')
         for a in u_a:
-            g += "a%s[group=\"app\", label=\"%s\"];<br>"%(a.id, a.handle)
+            g += "a{}[group=\"app\", label=\"{}\"];<br>".format(a.id, a.handle)
 
         for r in reports:
             for t in r.found_trackers.all():
-                g += "\ta%s -> t%s;<br>"%(r.application.id, t.id)
+                g += "\ta{} -> t{};<br>".format(r.application.id, t.id)
 
         g += "<br>}"
     except Tracker.DoesNotExist:

@@ -30,7 +30,7 @@ class AnalysisRequestView(FormView):
         if r_id < 0:
             return render(self.request, 'query_error.html', {'error': 'Unable to analyze the APK file'})
 
-        return HttpResponseRedirect('/reports/%s/'%r_id)
+        return HttpResponseRedirect('/reports/{}/'.format(r_id))
 
 
 class AnalysisRequestListView(ListView):
