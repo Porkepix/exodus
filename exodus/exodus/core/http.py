@@ -37,7 +37,7 @@ def analyze_http(self, report_id):
             for pkt in cap:
                 try:
                     if pkt.http.request_method == "POST":
-                        payload=HTTPPayload(http_analysis=http_analysis)
+                        payload = HTTPPayload(http_analysis=http_analysis)
                         if pkt.highest_layer != 'HTTP':
                             payload.destination_uri = pkt.http.request_full_uri
                             payload.layer = 'HTTP'
