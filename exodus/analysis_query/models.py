@@ -15,7 +15,7 @@ def randomword(length):
 
 def validate_handle(value):
     reg = re.compile(r'^(\w+\.)+\w+$')
-    if reg.match(value) == None :
+    if reg.match(value) == None:
         raise ValidationError(u'%s is not a valid application handle' % value)
     
     r=requests.get('%s%s' % ('https://play.google.com/store/apps/details?id=', value))
