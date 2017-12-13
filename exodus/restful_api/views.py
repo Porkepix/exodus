@@ -47,10 +47,13 @@ def get_apk(request, r_id):
         report = Report.objects.get(pk=r_id)
         apk_path = report.apk_file
 
-        minioClient = Minio(settings.MINIO_URL,
-                access_key=settings.MINIO_ACCESS_KEY,
-                secret_key=settings.MINIO_SECRET_KEY,
-                secure=settings.MINIO_SECURE)
+        minioClient = Minio(
+            settings.MINIO_URL,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE
+        )
+
         try:
             data = minioClient.get_object(settings.MINIO_BUCKET, apk_path)
             return HttpResponse(data.data, content_type=data.getheader('Content-Type'))
@@ -68,10 +71,13 @@ def upload_pcap(request, r_id):
         up_file = request.FILES['file']
         report = Report.objects.get(pk=r_id)
         pcap_name = '%s_%s.pcap' % (report.bucket, report.application.handle)
-        minio_client = Minio(settings.MINIO_URL,
-                     access_key=settings.MINIO_ACCESS_KEY,
-                     secret_key=settings.MINIO_SECRET_KEY,
-                     secure=settings.MINIO_SECURE)
+        minio_client = Minio(
+            settings.MINIO_URL,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE
+        )
+
         try:
             with tempfile.NamedTemporaryFile(delete=True) as fp:
                 for chunk in up_file.chunks():
@@ -100,10 +106,13 @@ def upload_flow(request, r_id):
         up_file = request.FILES['file']
         report = Report.objects.get(pk=r_id)
         flow_name = '%s_%s.flow' % (report.bucket, report.application.handle)
-        minio_client = Minio(settings.MINIO_URL,
-                     access_key=settings.MINIO_ACCESS_KEY,
-                     secret_key=settings.MINIO_SECRET_KEY,
-                     secure=settings.MINIO_SECURE)
+        minio_client = Minio(
+            settings.MINIO_URL,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE
+        )
+
         try:
             with tempfile.NamedTemporaryFile(delete=True) as fp:
                 for chunk in up_file.chunks():

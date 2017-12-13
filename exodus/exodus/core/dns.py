@@ -57,10 +57,13 @@ def analyze_dns(self, report_id):
         pass
 
     # Download pcap file
-    minio_client = Minio(settings.MINIO_URL,
-                 access_key=settings.MINIO_ACCESS_KEY,
-                 secret_key=settings.MINIO_SECRET_KEY,
-                 secure=settings.MINIO_SECURE)
+    minio_client = Minio(
+        settings.MINIO_URL,
+        access_key=settings.MINIO_ACCESS_KEY,
+        secret_key=settings.MINIO_SECRET_KEY,
+        secure=settings.MINIO_SECURE
+    )
+
     try:
         with tempfile.NamedTemporaryFile(delete=True) as fp:
             minio_client.fget_object(settings.MINIO_BUCKET, report.pcap_file, fp.name)

@@ -63,10 +63,13 @@ class Command(BaseCommand):
                 apk_tmp = os.path.join(tmpdir, apk_name)
 
                 # Download APK from storage
-                minio_client = Minio(settings.MINIO_URL,
-                             access_key=settings.MINIO_ACCESS_KEY,
-                             secret_key=settings.MINIO_SECRET_KEY,
-                             secure=settings.MINIO_SECURE)
+                minio_client = Minio(
+                    settings.MINIO_URL,
+                    access_key=settings.MINIO_ACCESS_KEY,
+                    secret_key=settings.MINIO_SECRET_KEY,
+                    secure=settings.MINIO_SECURE
+                )
+
                 try:
                     data = minio_client.get_object(settings.MINIO_BUCKET, apk_name)
                     with open(apk_tmp, 'wb') as file_data:
@@ -87,10 +90,13 @@ class Command(BaseCommand):
                                 report.save()
 
                     # Download class list file
-                    minio_client = Minio(settings.MINIO_URL,
-                                 access_key=settings.MINIO_ACCESS_KEY,
-                                 secret_key=settings.MINIO_SECRET_KEY,
-                                 secure=settings.MINIO_SECURE)
+                    minio_client = Minio(
+                        settings.MINIO_URL,
+                        access_key=settings.MINIO_ACCESS_KEY,
+                        secret_key=settings.MINIO_SECRET_KEY,
+                        secure=settings.MINIO_SECURE
+                    )
+
                     clist_tmp = os.path.join(tmpdir, report.class_list_file)
                     try:
                         data = minio_client.get_object(settings.MINIO_BUCKET, report.class_list_file)

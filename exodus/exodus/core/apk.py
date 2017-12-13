@@ -78,10 +78,13 @@ def download_apk(self, analysis):
     # Upload APK in storage
     apk = Path(analysis.apk_tmp)
     if exit_code == 0 and apk.is_file():
-        minioClient = Minio(settings.MINIO_URL,
-                    access_key=settings.MINIO_ACCESS_KEY,
-                    secret_key=settings.MINIO_SECRET_KEY,
-                    secure=settings.MINIO_SECURE)
+        minioClient = Minio(
+            settings.MINIO_URL,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE
+        )
+
         try:
             minioClient.make_bucket(settings.MINIO_BUCKET, location="")
         except BucketAlreadyOwnedByYou as err:
@@ -115,10 +118,13 @@ def clear_analysis_files(self, analysis, remove_from_storage=False):
     print('Removing %s' % analysis.tmp_dir)
     shutil.rmtree(analysis.tmp_dir, ignore_errors=True)
     if remove_from_storage:
-        minio_client = Minio(settings.MINIO_URL,
-                access_key=settings.MINIO_ACCESS_KEY,
-                secret_key=settings.MINIO_SECRET_KEY,
-                secure=settings.MINIO_SECURE)
+        minio_client = Minio(
+            settings.MINIO_URL,
+            access_key=settings.MINIO_ACCESS_KEY,
+            secret_key=settings.MINIO_SECRET_KEY,
+            secure=settings.MINIO_SECURE
+        )
+
         try:
             try:
                 objects = minio_client.list_objects(settings.MINIO_BUCKET, prefix=analysis.bucket, recursive=True)

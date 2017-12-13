@@ -50,10 +50,13 @@ def refreshdns(request):
 
 
 def get_app_icon(request, app_id):
-    minioClient = Minio(settings.MINIO_URL,
-                access_key=settings.MINIO_ACCESS_KEY,
-                secret_key=settings.MINIO_SECRET_KEY,
-                secure=settings.MINIO_SECURE)
+    minioClient = Minio(
+        settings.MINIO_URL,
+        access_key=settings.MINIO_ACCESS_KEY,
+        secret_key=settings.MINIO_SECRET_KEY,
+        secure=settings.MINIO_SECURE
+    )
+
     try:
         app = Application.objects.get(pk=app_id)
     except Application.DoesNotExist:
