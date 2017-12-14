@@ -29,7 +29,7 @@ def get_all_apps(request):
 
 def search_by_handle(request, handle):
     try:
-        reports = Report.objects.order_by('-creation_date').filter(application__handle = handle)
+        reports = Report.objects.order_by('-creation_date').filter(application__handle=handle)
     except Report.DoesNotExist:
         raise Http404("No reports found")
     return render(request, 'reports_list.html', {'reports': reports})

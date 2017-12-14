@@ -199,13 +199,13 @@ def start_static_analysis(analysis):
             app.icon_path = analysis.icon_name
         app.save(force_insert=True)
 
-        apk = Apk(application = app)
+        apk = Apk(application=app)
         apk.name = analysis.apk_name
         apk.sum = shasum
         apk.save(force_insert=True)
 
         for perm in perms:
-            p = Permission(application = app)
+            p = Permission(application=app)
             p.name = perm
             p.save(force_insert=True)
 
