@@ -172,16 +172,16 @@ def getApplicationInfos(handle):
         if len(lines) != 2:
             return None
         columns = []
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'title', 'text':'Title'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'creator', 'text':'Creator'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'size', 'text':'Size'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'downloads', 'text':'Downloads'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'update', 'text':'Last Update'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'handle', 'text':'AppID'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'version', 'text':'Version'})
-        columns.append({'start':0, 'end':0, 'value':'', 'name':'rating', 'text':'Rating'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'title', 'text': 'Title'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'creator', 'text': 'Creator'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'size', 'text': 'Size'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'downloads', 'text': 'Downloads'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'update', 'text': 'Last Update'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'handle', 'text': 'AppID'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'version', 'text': 'Version'})
+        columns.append({'start': 0, 'end': 0, 'value': '', 'name': 'rating', 'text': 'Rating'})
         result = {}
-        for i in range(0,len(columns)):
+        for i in range(0, len(columns)):
             v = columns[i]
             v['start'] = lines[0].find(v['text'])
             if i > 0:

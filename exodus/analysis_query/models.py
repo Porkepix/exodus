@@ -30,6 +30,6 @@ class AnalysisRequest(models.Model):
     storage_path = models.TextField(default=path)
     bucket = models.CharField(max_length=200, default='')
     apk = models.CharField(max_length=500, default='')
-    handle = models.CharField(max_length=500,validators=[validate_handle])
+    handle = models.CharField(max_length=500, validators=[validate_handle])
     description = models.TextField(blank=True)
     processed = models.BooleanField(default=False)
